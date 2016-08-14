@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="stundenplanApp">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+      <title>Stundenplan</title>
+      <!-- Bootstrap Core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <!-- Custom CSS -->
+      <link href="css/simple-sidebar.css" rel="stylesheet">
+      <link href="css/subjectChooser.css" rel="stylesheet">
+
+  </head>
+  <body>
+      <div id="wrapper">
+          <!-- Sidebar -->
+          <div id="sidebar-wrapper">
+              <ul class="sidebar-nav">
+                  <li class="sidebar-brand">
+                      <a href="#/">
+                          Stundenplan <span class="label label-warning">ALPHA</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#/">Start</a>
+                  </li>
+                  <li>
+                      <a href="#/generator">Eingabe</a>
+                  </li>
+                  <li>
+                    <a href="#/export">Ausgabe</a>
+                  </li>
+                  <li>
+                      <a href="#/about">Über</a>
+                  </li
+              </ul>
+          </div>
+          <!-- /#sidebar-wrapper -->
+          <!-- Page Content -->
+          <div id="page-content-wrapper">
+              <div class="container-fluid">
+                  <div class="row">
+                      <div class="col-lg-12" id="contentView" ng-view>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- /#page-content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+
+
+
+
+      <!-- jQuery -->
+      <script src="js/jquery.js"></script>
+      <!-- Bootstrap Core JavaScript -->
+      <script src="js/bootstrap.min.js"></script>
+
+      <!-- Angular JS (+ route) -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js"></script>
+      <script src="js/angular-local-storage.min.js"></script>
+
+
+
+      <!-- Load App -->
+      <script src="app/app.module.js"></script>
+      <script src="app/generator.controller.js"></script>
+      <script src="app/names.value.js"></script>
+      <script src="app/subjectData.service.js"></script>
+      <script src="app/subjectPicker.directive.js"></script>
+      <script src="app/subjectChooser.directive.js"></script>
+      <script src="app/subjectChooser.filter.js"></script>
+      <script src="app/export.controller.js"></script>
+
+
+      <script>
+      $("#menu-toggle").click(function(e) {
+          e.preventDefault();
+          $("#wrapper").toggleClass("toggled");
+      });
+      </script>
+
+  </body>
+</html>

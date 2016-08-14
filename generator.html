@@ -1,0 +1,70 @@
+<h1>Eingabe</h1>
+
+<div class="row" ng-controller="generatorCtrl">
+  <center>
+    <div class="btn-group">
+      <button type="button" class="btn btn-default" ng-class="week.value == 1 ? 'active' : ''" ng-click="toggleWeek('A')" id="weekABtn">A-Woche</button>
+      <button type="button" class="btn btn-default" ng-class="week.value == 2 ? 'active' : ''" ng-click="toggleWeek('B')" id="weekBBtn">B-Woche</button>
+    </div>
+  </center><br>
+
+  <!-- Woche A -->
+  <div class="table-responsive " ng-show="week.value == 1">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3 class="panel-title">Optionen</h3></div>
+      <div class="panel-body">
+        <a class="btn btn-default" ng-click="resetWeek('a')">Zurücksetzen</a>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <th>
+        <td><b>Montag</b></td>
+        <td><b>Dienstag</b></td>
+        <td><b>Mittwoch</b></td>
+        <td><b>Donnerstag</b></td>
+        <td><b>Freitag</b></td>
+      </th>
+      <tr ng-repeat="hour in hours">
+          <td>{{hour}}</td>
+          <td><subject-picker week="a" day="Montag" hour="{{hour}}"/></td>
+          <td><subject-picker week="a" day="Dienstag" hour="{{hour}}"/></td>
+          <td><subject-picker week="a" day="Mittwoch" hour="{{hour}}"/></td>
+          <td><subject-picker week="a" day="Donnerstag" hour="{{hour}}"/></td>
+          <td><subject-picker week="a" day="Freitag" hour="{{hour}}"/></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Woche B -->
+  <div class="table-responsive" ng-show="week.value == 2">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><h3 class="panel-title">Optionen</h3></div>
+      <div class="panel-body">
+        <a class="btn btn-default" ng-click="resetWeek('b')">Zurücksetzen</a>
+        <a class="btn btn-default" ng-click="applyFromWeek()">Stundenplan aus Woche A übernehmen</a>
+      </div>
+    </div>
+
+    <table class="table table-stripped">
+      <th>
+        <td><b>Montag</b></td>
+        <td><b>Dienstag</b></td>
+        <td><b>Mittwoch</b></td>
+        <td><b>Donnerstag</b></td>
+        <td><b>Freitag</b></td>
+      </th>
+      <div ng-repeat="day in days">
+        <tr ng-repeat="hour in hours">
+            <td>{{hour}}</td>
+            <td><subject-picker week="b" day="Montag" hour="{{hour}}"/></td>
+            <td><subject-picker week="b" day="Dienstag" hour="{{hour}}"/></td>
+            <td><subject-picker week="b" day="Mittwoch" hour="{{hour}}"/></td>
+            <td><subject-picker week="b" day="Donnerstag" hour="{{hour}}"/></td>
+            <td><subject-picker week="b" day="Freitag" hour="{{hour}}"/></td>
+        </tr>
+      </div>
+    </table>
+  </div>
+</div>

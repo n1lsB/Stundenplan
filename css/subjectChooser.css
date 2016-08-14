@@ -1,0 +1,20 @@
+.popover-content .active {
+  background-color: #337ab7;
+  color: white;
+}
+.popover-content {
+  padding: 10px 0px 5px;
+  text-align: center;
+}
+.popover-content input {
+  margin: 0 10px;
+}
+
+.popover-content p {
+  margin: 0px;
+  cursor: default;
+}
+
+.popover-content p:hover {
+  background-color: grey;
+}
