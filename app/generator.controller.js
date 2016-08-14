@@ -1,7 +1,7 @@
 angular.module('stundenplanApp')
   .controller("generatorCtrl", function($scope, currentWeek, days, hours, subjectDataService, avaibleSubjects) {
     $scope.data = subjectDataService.data;
-    
+
     $scope.week = currentWeek;
     $scope.days = days;
     $scope.hours = hours;
@@ -15,10 +15,18 @@ angular.module('stundenplanApp')
       // $(document.getElementById("weekBBtn")).toggleClass("active");
     }
 
-    $scope.applyFromWeek = () => {
+    $scope.applyFromWeekA = () => {
       for (day in subjectDataService.data.a) {
         for (hour in subjectDataService.data.a[day]) {
           subjectDataService.data.b[day][hour] = avaibleSubjects[subjectDataService.data.a[day][hour].name]
+        }
+      }
+      subjectDataService.saveData();
+    }
+    $scope.applyFromWeekB = () => {
+      for (day in subjectDataService.data.a) {
+        for (hour in subjectDataService.data.a[day]) {
+          subjectDataService.data.a[day][hour] = avaibleSubjects[subjectDataService.data.b[day][hour].name]
         }
       }
       subjectDataService.saveData();
