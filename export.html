@@ -6,42 +6,45 @@
   }
   table {
     -webkit-print-color-adjust: exact;
+    
   }
   @media print {
     th {
-      max-width: 170px;
+      min-width: 170px;
       width: 170px;
     }
   }
 </style>
 <p>Dies ist dein Stundenplan.</p>
 
-<table border="1" ng-controller="exportController">
-  <tbody>
-    <tr>
-      <td style="background-color: #2c3e50"></td>
-      <th colspan="2" ng-repeat="day in days" style="text-align: center; background-color: #34495e; color:white !important;">{{day}}</th>
-    </tr>
-    <tr ng-repeat="hour in hours" ng-if="hasContent(hour)">
-      <td style="text-align: center; width: 30px; background-color: #2c3e50; color:white !important;">{{hour}}</td>
-      <td ng-repeat-start="day in days"
-          rowspan="{{getRowspan(this, 'a')}}"
-          ng-if="checkShowing(this, 'a')"
-          colspan="{{getColspan(this, 'a')}}"
-          style="width: {{getWidth(this, 'a')}}px !important; height: {{getHeight(this, 'a')}}px;
-          background-color: {{data.getHour('a', day, hour).color}}"
-          >
-        {{data.getHour('a', day, hour).name}}<br>
-      </td>
-      <td colspan="1" ng-repeat-end
-          ng-if="checkShowing(this, 'b')"
-          rowspan="{{getRowspan(this, 'b')}}"
-          colspan="{{getColspan(this, 'b')}}"
-          style="width: {{getWidth(this, 'b')}}px !important; height: {{getHeight(this, 'b')}}px;
-          background-color: {{data.getHour('b', day, hour).color}}">
-        {{data.getHour('b', day, hour).name}}
-      </td>
+<div class="exportWrapper" style="">
+  <table border="1" ng-controller="exportController">
+    <tbody>
+      <tr>
+        <td style="background-color: #2c3e50; min-width: 20px"></td>
+        <th colspan="2" ng-repeat="day in days" style="text-align: center; background-color: #34495e; color:white !important;">{{day}}</th>
+      </tr>
+      <tr ng-repeat="hour in hours" ng-if="hasContent(hour)">
+        <td style="text-align: center; width: 30px; background-color: #2c3e50; color:white !important;">{{hour}}</td>
+        <td ng-repeat-start="day in days"
+            rowspan="{{getRowspan(this, 'a')}}"
+            ng-if="checkShowing(this, 'a')"
+            colspan="{{getColspan(this, 'a')}}"
+            style="width: {{getWidth(this, 'a')}}px !important; height: {{getHeight(this, 'a')}}px;
+            background-color: {{data.getHour('a', day, hour).color}}"
+            >
+          {{data.getHour('a', day, hour).name}}<br>
+        </td>
+        <td colspan="1" ng-repeat-end
+            ng-if="checkShowing(this, 'b')"
+            rowspan="{{getRowspan(this, 'b')}}"
+            colspan="{{getColspan(this, 'b')}}"
+            style="width: {{getWidth(this, 'b')}}px !important; height: {{getHeight(this, 'b')}}px;
+            background-color: {{data.getHour('b', day, hour).color}}">
+          {{data.getHour('b', day, hour).name}}
+        </td>
 
-    </tr>
-  </tbody>
-</table>
+      </tr>
+    </tbody>
+  </table>
+</div>
