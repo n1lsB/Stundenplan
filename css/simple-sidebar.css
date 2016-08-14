@@ -12,10 +12,10 @@
 
 #wrapper {
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
+    /*-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease;*/
 }
 
 #wrapper.toggled {
@@ -31,10 +31,10 @@
     margin-left: -250px;
     overflow-y: auto;
     background: #3498db;
-    -webkit-transition: all 0.5s ease;
+    /*-webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease;*/
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -132,7 +132,19 @@
 /* Print */
 @media print {
   #sidebar-wrapper {
-    border-right: 1px solid black;
-    overflow-x: hidden;
+    display: none;
+    width: 0;
+    padding: 0;
+    margin:0;
+  }
+  #wrapper {
+      padding-left: 0px;
+  }
+  #wrapper.toggled {
+      padding-left: 0;
+  }
+  #page-content-wrapper {
+    margin: 0;
+    padding: 0;
   }
 }
