@@ -3,21 +3,23 @@ angular.module('stundenplanApp')
   .value('days', ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag']) // Tage
   .value('hours', ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']) // Stunden
   .value('avaibleSubjects',
-    {'Frei': {'name': 'Frei', 'color': 'white'},
+    {
+    // NOTICE: All Color Code must be complete, like #00FFFF, NO #00FF (short codes), because of the hex2rgb function in functions.js
+    'Frei': {'name': 'Frei', 'color': '#FFFFFF'},
 
     'Französisch': {'name': 'Französisch', 'color': '	#00FFFF'},
     'Deutsch': {'name': 'Deutsch', 'color': '	#6495ED'},
     'Englisch': {'name': 'Englisch', 'color': '#1E90FF'},
     'Spanisch': {'name': 'Spanisch', 'color': '#008B8B'},
 
-    'Mathe': {'name': 'Mathe', 'color': '	#FFD700'},
+    'Mathe': {'name': 'Mathe', 'color': '#FFD700'},
     'Physik': {'name': 'Physik', 'color': '#F0E68C'},
     'Biologie': {'name': 'Biologie', 'color': '#F4A460'},
     'Informatik': {'name': 'Informatik', 'color': '#DAA520'},
     'Chemie': {'name': 'Chemie', 'color': '#FFA500'},
 
     'Erdkunde': {'name': 'Erdkunde', 'color': '#00FF7F'},
-    'Politik': {'name': 'Politik', 'color': '	#2E8B57'},
+    'Politik': {'name': 'Politik', 'color': '#2E8B57'},
     'Pädagogik': {'name': 'Pädagogik', 'color': '#99FF33'},
     'Geschichte': {'name': 'Geschichte', 'color': '#00FF00'},
     'Sozialwis.': {'name': 'Sozialwis.', 'color': '#009900'},
