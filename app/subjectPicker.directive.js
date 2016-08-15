@@ -4,12 +4,12 @@ angular.module('stundenplanApp')
       restrict: 'E',
       replace: 'false',
       template: `
-                <select>
+                <select style="background-color: {{currentDay[attrs['hour']].color}}">
                   <option ng-repeat="(k,v) in avaibleSubjects | subjectFilter: '':this"
                           ng-selected="v == currentDay[attrs['hour']].name"
-                          >
-                          {{v}}
-                  </option>
+                          style="color: {{(avaibleSubjects[v].color != 'white') ? avaibleSubjects[v].color : 'black'}};
+                                 background-color: white;"
+                          >{{v}}</option>
                 </select>
                 `,
       scope: {},
@@ -23,7 +23,7 @@ angular.module('stundenplanApp')
         $(elem).change(function() {
           let newSubject = $(elem).find('option:selected').text();
           scope.$apply(() => {
-            scope.currentDay[attrs['hour']] = avaibleSubjects[newSubject];
+            subjectDataService.data[attrs['week']][attrs['day']][attrs['hour']] = avaibleSubjects[newSubject];
           })
         })
       }
