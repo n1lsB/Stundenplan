@@ -6,7 +6,7 @@
   }
   table {
     -webkit-print-color-adjust: exact;
-    
+
   }
   @media print {
     th {
@@ -31,7 +31,7 @@
             ng-if="checkShowing(this, 'a')"
             colspan="{{getColspan(this, 'a')}}"
             style="width: {{getWidth(this, 'a')}}px !important; height: {{getHeight(this, 'a')}}px;
-            background-color: {{data.getHour('a', day, hour).color}}"
+            background-color: {{data.getHour('a', day, hour).color}}; color: {{getColor(this, 'a')}} !important"
             >
           {{data.getHour('a', day, hour).name}}<br>
         </td>
@@ -40,7 +40,7 @@
             rowspan="{{getRowspan(this, 'b')}}"
             colspan="{{getColspan(this, 'b')}}"
             style="width: {{getWidth(this, 'b')}}px !important; height: {{getHeight(this, 'b')}}px;
-            background-color: {{data.getHour('b', day, hour).color}}">
+            background-color: {{data.getHour('b', day, hour).color}}; color {{getColor(this, 'b')}}">
           {{data.getHour('b', day, hour).name}}
         </td>
 
