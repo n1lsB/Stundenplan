@@ -8,7 +8,7 @@ angular.module('stundenplanApp')
                                color: {{getFontColor()}}">
                   <option ng-repeat="(k,v) in avaibleSubjects | subjectFilter: '':this"
                           ng-selected="v == currentDay[attrs['hour']].name"
-                          style="color: {{ColorLuminance(avaibleSubjects[v].color, -0.2)}};
+                          style="color: {{ColorLuminance(avaibleSubjects[v].color, -0.3)}};
                                  background-color: white;"
                           >{{v}}</option>
                 </select>
@@ -32,7 +32,7 @@ angular.module('stundenplanApp')
           let hexCode = scope.currentDay[attrs['hour']].color;
           let rgb = hexToRgb(hexCode);
           // if (red*0.299 + green*0.587 + blue*0.114) > 186 use #000000 else use #ffffff
-          if ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 186) {
+          if ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 130) {
             return "#000000";
           } else {
             return "#ffffff";
