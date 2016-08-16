@@ -101,11 +101,11 @@ angular.module('stundenplanApp')
       let hexCode = data.data[week][scope.day][scope.hour].color;
       let rgb = hexToRgb(hexCode);
 
-      // if (red*0.299 + green*0.587 + blue*0.114) > 186 use #000000 else use #ffffff
-      if ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 186) {
+      // Orig: if (red*0.299 + green*0.587 + blue*0.114) > 186 use #000000 else use #ffffff
+      if ((rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114) > 130) {
         return "#000000";
       } else {
-        return "#ffffff";
+        return "#D3D3D3";
       }
 
     }

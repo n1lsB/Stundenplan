@@ -11,8 +11,7 @@ angular.module('stundenplanApp')
       } else {
         currentWeek.value = 1
       }
-      // $(document.getElementById("weekABtn")).toggleClass("active");
-      // $(document.getElementById("weekBBtn")).toggleClass("active");
+      
     }
 
     $scope.applyFromWeekA = () => {

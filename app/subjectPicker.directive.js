@@ -8,7 +8,7 @@ angular.module('stundenplanApp')
                                color: {{getFontColor()}}">
                   <option ng-repeat="(k,v) in avaibleSubjects | subjectFilter: '':this"
                           ng-selected="v == currentDay[attrs['hour']].name"
-                          style="color: {{(avaibleSubjects[v].color != '#FFFFFF') ? avaibleSubjects[v].color : 'black'}};
+                          style="color: {{ColorLuminance(avaibleSubjects[v].color, -0.2)}};
                                  background-color: white;"
                           >{{v}}</option>
                 </select>
@@ -37,6 +37,9 @@ angular.module('stundenplanApp')
           } else {
             return "#ffffff";
           }
+        }
+        scope.ColorLuminance = (x, y) => {
+          return ColorLuminance(x, y);
         }
       }
     }
