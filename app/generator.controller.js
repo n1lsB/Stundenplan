@@ -11,7 +11,6 @@ angular.module('stundenplanApp')
       } else {
         currentWeek.value = 1
       }
-      
     }
 
     $scope.applyFromWeekA = () => {

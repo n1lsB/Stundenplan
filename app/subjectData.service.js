@@ -1,48 +1,65 @@
 angular.module('stundenplanApp')
   .factory('subjectDataService', function (days, hours, avaibleSubjects, localStorageService) {
-    let data = {a: {}, b: {}}
+    let data = {a: {}, b: {}, room: {}}
 
     if (localStorageService.get("data") == null) {
-        let temparray = {};
-        let hoursobject = {};
-
-        hours.forEach((e) => {
-          hoursobject[e] = avaibleSubjects.Frei;
+        data.room = {};
+        ['a', 'b'].forEach(week => {
+          data[week] = {};
+          data.room[week] = {};
+          days.forEach(day => {
+            data[week][day] = {};
+            data.room[week][day] = {};
+            hours.forEach(hour => {
+              data[week][day][hour] = avaibleSubjects.Frei;
+              data.room[week][day][hour] = '';
+            })
+          })
         })
-        days.forEach((e) => {
-          temparray[e] = hoursobject
-        })
-        data.a = JSON.parse(JSON.stringify(temparray)); // Clone the Object, so it does not have any references
-        data.b = JSON.parse(JSON.stringify(temparray)); // Same for the b week
         localStorageService.set("data", data)
+        console.log(data)
     } else {
-      data = localStorageService.get("data");
-      for (week in data) {
+      // There is already data
+      data = localStorageService.get("data"); // Get Data from LocalStorage
+
+      // Validating the Subject Names -> Is there an unknown Subject???
+      ['a', 'b'].forEach(week => {
         for (day in data[week]) {
           for (hour in data[week][day]) {
             if (avaibleSubjects[data[week][day][hour].name] == undefined) {
+              // Found an unknown Subject, replace it :-)
               data[week][day][hour] = avaibleSubjects['Frei'];
               continue;
             }
-
             data[week][day][hour] = avaibleSubjects[data[week][day][hour].name];
-
           }
         }
+      })
+      if (data.room == undefined) {
+        data.room = {};
+        ['a', 'b'].forEach(week => {
+          data.room[week] = {};
+          days.forEach(day => {
+            data.room[week][day] = {};
+            hours.forEach(hour => {
+              data.room[week][day][hour] = '';
+            })
+          })
+        })
       }
+      console.log(data)
     }
 
-
-
     return {
+      // Return a current Subject
       'getHour': (week, day, hour) => {
-
         return data[week][day][hour];
       },
       'setHour': (week, day, hour, subject) => {
         data[week][day][hour] = subject;
         localStorageService.set("data", data)
       },
+      // Store temp 'data' in LocalStorage
       'saveData': () => {
         localStorageService.set("data", data)
       },

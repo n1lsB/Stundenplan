@@ -3,7 +3,8 @@ angular.module('stundenplanApp')
     return {
       restrict: 'E',
       replace: 'false',
-      template: `
+      template: `<div>
+
                 <select style="background-color: {{currentDay[attrs['hour']].color}};
                                color: {{getFontColor()}}">
                   <option ng-repeat="(k,v) in avaibleSubjects | subjectFilter: '':this"
@@ -12,6 +13,8 @@ angular.module('stundenplanApp')
                                  background-color: white;"
                           >{{v}}</option>
                 </select>
+                <input type="text" placeholder="Raum" size="5" ng-if="currentDay[attrs['hour']].name != 'Frei'" ng-model="data.data.room[attrs['week']][attrs['day']][attrs['hour']]"></input>
+                </div>
                 `,
       scope: {},
       link: function(scope, elem, attrs){
@@ -25,6 +28,7 @@ angular.module('stundenplanApp')
           let newSubject = $(elem).find('option:selected').text();
           scope.$apply(() => {
             subjectDataService.data[attrs['week']][attrs['day']][attrs['hour']] = avaibleSubjects[newSubject];
+            subjectDataService.saveData(); // Don't forget to save into LocalStorage :D
           })
         })
 
