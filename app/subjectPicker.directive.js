@@ -4,7 +4,6 @@ angular.module('stundenplanApp')
       restrict: 'E',
       replace: 'false',
       template: `<div>
-
                 <select style="background-color: {{currentDay[attrs['hour']].color}};
                                color: {{getFontColor()}}">
                   <option ng-repeat="(k,v) in avaibleSubjects | subjectFilter: '':this"
