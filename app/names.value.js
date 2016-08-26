@@ -11,6 +11,7 @@ angular.module('stundenplanApp')
     'Deutsch': {'name': 'Deutsch', 'color': '	#6495ED'},
     'Englisch': {'name': 'Englisch', 'color': '#1E90FF'},
     'Spanisch': {'name': 'Spanisch', 'color': '#008B8B'},
+    'Latein': {'name': 'Latein', 'color': '#8000FF'},
 
     'Mathe': {'name': 'Mathe', 'color': '#FFD700'},
     'Physik': {'name': 'Physik', 'color': '#F0E68C'},
